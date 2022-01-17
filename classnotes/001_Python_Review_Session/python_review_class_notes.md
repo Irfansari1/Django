@@ -1,6 +1,7 @@
 # Python Review Session Class Notes
 
 ## Summary
+
 - Introduction
 - Data Types
   - String
@@ -19,9 +20,9 @@
   - While vs For
 - Functions
   - Arguments
-  - Arbitrary Arguments, *args
+  - Arbitrary Arguments, \*args
   - Keyword Arguments
-  - Arbitrary Keyword Arguments, **kwargs
+  - Arbitrary Keyword Arguments, \*\*kwargs
   - Default Parameter Value
   - The pass Statement
 - Decorators
@@ -33,16 +34,18 @@
 - Modules
 
 ## Introduction to Python
+
 - Comments in Python start with the hash character, #
 - The equal sign (=) is used to assign a value to a variable
 - \ can be used to escape
 - Indentation 4 spaces.
-- Overall code syntax rules are stated at PEP8. There are online tools. 
+- Overall code syntax rules are stated at PEP8. There are online tools.
   [PEP8 online check](http://pep8online.com/)
 
 ### Using Python as a Calculator
 
-The operators +, -, * and / work just like in most other languages:
+The operators +, -, \* and / work just like in most other languages:
+
 ```py
 2 + 2
 # 4
@@ -51,18 +54,21 @@ The operators +, -, * and / work just like in most other languages:
 ## Data Types
 
 ### String
+
 Assign string to a variable: a = "Hello"
 
 Expressing string with quotes, '', "", ''' ''', """ """
 
 Multiline Strings with ''' ''' or """ """:
+
 ```py
 a = """Python
 class"""
 ```
-Last one is called docstring. A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the __doc__ special attribute of that object.
 
-Strings are immutable, which means a string value cannot be updated. 
+Last one is called docstring. A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the **doc** special attribute of that object.
+
+Strings are immutable, which means a string value cannot be updated.
 
 We can verify this by trying to update a part of the string which will led us to an error.
 
@@ -74,8 +80,9 @@ print(len(a))
 ```
 
 Indexes (positive and negative)
-  - Individual characters in a string may be chosen. If the string has length L, then the indices start from 0 for the initial character and go to L-1 for the rightmost character. 
-  - Negative indices may also be used to count from the right end, -1 for the rightmost character through -L for the leftmost character.
+
+- Individual characters in a string may be chosen. If the string has length L, then the indices start from 0 for the initial character and go to L-1 for the rightmost character.
+- Negative indices may also be used to count from the right end, -1 for the rightmost character through -L for the leftmost character.
 
 - Call char by index:
 
@@ -85,13 +92,15 @@ print(a[1])
 ```
 
 - Slicing
-    - stringReference [ start : pastEnd ]
-    - stringReference [ : pastEnd ]
-    - stringReference [ start : ]
-    - stringReference [ : ]
-    - Change the order: s[::-1]
+
+  - stringReference [ start : pastEnd ]
+  - stringReference [ : pastEnd ]
+  - stringReference [ start : ]
+  - stringReference [ : ]
+  - Change the order: s[::-1]
 
 - Methods
+
 ```py
 upper() # Returns an uppercase version of the string
 lower() # Returns a lowercase version of the string
@@ -121,19 +130,19 @@ string3.strip("y")
 - Literal integer values may not contain a decimal point.
 - Integers may be arbitrarily large and are stored exactly.
 - Integers have normal operations, with usual precedence (highest listed first):
-    - \*\*: exponentiation (5\*\*3 means 5\*5\*5)
-    - *, multiplication
-    - /, division with float result
-    - //, floor divisions result int, integer division (ignoring any remainder)
-    - %, modulus just the remainder from division 
-    - +, -: addition, subtraction
-
+  - \*\*: exponentiation (5\*\*3 means 5\*5\*5)
+  - \*, multiplication
+  - /, division with float result
+  - //, floor divisions result int, integer division (ignoring any remainder)
+  - %, modulus just the remainder from division
+  - +, -: addition, subtraction
 
 ### Boolean
 
 - The Boolean data type can be one of two values, either True or False.
 - The values True and False will also always be with a capital T and F
 - Comparison operators are used to compare values and evaluate down to a single Boolean value of either True or False
+
 ```txt
 ==	Equal to
 !=	Not equal to
@@ -172,6 +181,7 @@ print(not(3 <= 1))          # The original expression is False
 ```
 
 - Falsy expressions:
+
 ```py
 # [] {} 0 None  # False
 
@@ -184,10 +194,11 @@ if []:
 - Operational order: not and or
 
 ### Float
+
 Nothing special.
 
-
 ## Collection Data Types
+
 - List
 - Dictionary
 - Tuple
@@ -204,8 +215,10 @@ list1 = ["Apple", 1, 3.5, True, [1, 3], {"Ready": "yes"}]
 ```
 
 Lists may be constructed in several ways:
+
 - Using a pair of square brackets to denote the empty list: []
 - Using the type constructor: list() or list(iterable)
+
 ```py
 a = list()
 print(a)
@@ -213,13 +226,15 @@ print(a)
 
 The constructor builds a list whose items are the same and in the same order as iterable’s items.
 
-- list('abc') returns ['a', 'b', 'c'] 
+- list('abc') returns ['a', 'b', 'c']
 - list( (1, 2, 3) ) returns [1, 2, 3]
 
 Python has a set of built-in methods that you can use on lists:
+
 ```py
 append()  # Adds a -single element- at the end of the list
 ```
+
 ```py
 stack = []
 
@@ -230,12 +245,13 @@ for i in range(5):
 while len(stack):
     print(stack.pop())
 ```
+
 ```py
 clear()	  # Removes all the elements from the list
 copy()	  # Returns a copy of the list
 ```
 
-- The copy() method in Python returns a copy of the List. We can copy a list to another list using the = operator, however copying a list using = operator means that when we change the new list the copied list will also be changed, if you do not want this behaviour then use the copy() method instead of = operator. 
+- The copy() method in Python returns a copy of the List. We can copy a list to another list using the = operator, however copying a list using = operator means that when we change the new list the copied list will also be changed, if you do not want this behaviour then use the copy() method instead of = operator.
 
 ```py
 count()	  # Returns the number of elements with the specified value
@@ -252,7 +268,9 @@ reverse() actually reverses the elements in the container. reversed() doesn't ac
 ```py
 sort()	  # Sorts the list
 ```
+
 How to reach a value inside a list:
+
 ```py
 # Reach to the index no 1 inside inner list:
 a = ['ali', 2, [1,2], 7]
@@ -261,6 +279,7 @@ a[2][1]
 ```
 
 How to join two list:
+
 ```py
 list1 = ["a", "b", "c"]
 list2 = [1, 2, 3]
@@ -271,8 +290,8 @@ print(list3)
 # ['a', 'b', 'c', 1, 2, 3]
 ```
 
-
 ### Tuples
+
 - Less memory
 - Stable, unchanged values
 - Faster
@@ -280,6 +299,7 @@ print(list3)
 Tuples are immutable sequences, typically used to store collections of heterogeneous data.
 
 Tuples may be constructed in a number of ways:
+
 - Using a pair of parentheses to denote the empty tuple: ()
 - Using a trailing comma for a singleton tuple: "a", or ("a",)
 - Separating items with commas: "a", "b", "c" or ("a", "b", "c")
@@ -306,6 +326,7 @@ print(thistuple[1])
 ```
 
 Python has two built-in methods that you can use on tuples.
+
 ```py
 count()	# Returns the number of times a specified value occurs in a tuple
 index()	# Searches the tuple for a specified value and returns the position of where it was found
@@ -323,6 +344,7 @@ print(tuple3)
 ```
 
 ### Dictionary
+
 Dictionaries are used to store data values in key:value pairs.
 
 A dictionary is a collection which is ordered, changeable and does not allow duplicates.
@@ -351,8 +373,8 @@ x = thisdict.get("model")
 print(x)
 # Mustang
 
-# If not, then it will return None (if get() is used with only one argument). 
-# Default None can be changed to a worning message: 
+# If not, then it will return None (if get() is used with only one argument).
+# Default None can be changed to a worning message:
 thisdict.get("bran", "There is no such a key!")
 
 
@@ -381,7 +403,7 @@ thisdict["color"] = "red"
 # The pop() method removes the item with the specified key name:
 thisdict.pop("model")
 
-# The popitem() method removes the last inserted item 
+# The popitem() method removes the last inserted item
 thisdict.popitem()
 
 
@@ -473,13 +495,16 @@ a.union(b)
 ```
 
 ### Sets vs Lists and Tuples
+
 Sets, unlike lists or tuples, cannot have multiple occurrences of the same element and store unordered values.
 
 Usecase:
 Remove duplicate values from a list or tuple and to perform common math operations like unions and intersections.
 
 ## Conditional - If
+
 Check if the list is empty or not:
+
 ```py
 list11 = [1]
 if list11:
@@ -503,7 +528,7 @@ else:
 
 # if num_1 > num_2:
 #     print(f"{num_1} is greater than {num_2}")
-    
+
 # a = 2
 # b = 330
 # print("A") if a > b else print("B")
@@ -513,12 +538,15 @@ else:
 # print("A") if a > b else print("=") if a == b else print("B")
 ##############OPTIONAL#######################################
 ```
+
 While using if, put the most specific condition to the top.
 
 ## Loops
 
 ### While
+
 With the while loop we can execute a set of statements as long as a condition is true.
+
 ```py
 # Ask for password until user enters correct secret:
 secret = 'swordfish'
@@ -541,6 +569,7 @@ while i < 6:
     break
   i += 1
 ```
+
 - Some libraries of python may be called like random and time. No code is perfect at the begginning. Modify as you need. Google when you can't remember. Use cheat sheets.
 
 ```py
@@ -559,6 +588,7 @@ while i < 5:
 ```
 
 ### For
+
 A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
 
 This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
@@ -628,8 +658,8 @@ for x in range(2, 30, 3):
   print(x)
 ```
 
-
 ### Nested Loops
+
 A nested loop is a loop inside a loop.
 
 The "inner loop" will be executed one time for each iteration of the "outer loop".
@@ -644,7 +674,6 @@ for adj in adjs:
     print(adj, fruit)
 ```
 
-
 ### The pass Statement
 
 for loops cannot be empty, but if you for some reason have a for loop with no content, put in the pass statement to avoid getting an error.
@@ -657,9 +686,9 @@ for x in [0, 1, 2]:
 ### While vs For
 
 Pushup analogy:
+
 - For ----> Do pushup 10 times
 - While --> Do pushup until I say stop!
-
 
 ## Functions
 
@@ -669,7 +698,7 @@ You can pass data, known as parameters, into a function.
 
 A function can return data as a result.
 
-Naming functions varies, but in django  you will genarally see  snake_case.
+Naming functions varies, but in django you will genarally see snake_case.
 
 ```py
 # In Python a function is defined using the def keyword:
@@ -680,11 +709,22 @@ def my_function():
 my_function()
 ```
 
+<!-- agent_name = 'James Bond'
+kill_count = 9
+
+# old ways
+
+print('{0} has killed {1} enemies '.format(agent_name,kill_count))
+
+# f-strings way
+
+print(f'{agent_name} has killed {kill_count} enemies') -->
+
 ### Arguments
 
 Information can be passed into functions as arguments.
 
-Arguments are specified after the function name, inside the parentheses. 
+Arguments are specified after the function name, inside the parentheses.
 
 You can add as many arguments as you want, just separate them with a comma.
 
@@ -703,12 +743,14 @@ def my_function(name, last_name):
 my_function("John", "Smith")
 ```
 
-### Arbitrary Arguments, *args
-If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
+### Arbitrary Arguments, \*args
+
+If you do not know how many arguments that will be passed into your function, add a \* before the parameter name in the function definition.
 
 This way the function will receive a tuple of arguments, and can access the items accordingly:
 
-If the number of arguments is unknown, add a * before the parameter name:
+If the number of arguments is unknown, add a \* before the parameter name:
+
 ```py
 def my_function(*kids):
   return "The youngest child is " + kids[0]
@@ -728,9 +770,9 @@ def my_function(child3, child2, child1):
 my_function(child1 = "Hans", child2 = "Angel", child3 = "Lilly")
 ```
 
-### Arbitrary Keyword Arguments, **kwargs
+### Arbitrary Keyword Arguments, \*\*kwargs
 
-If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
+If you do not know how many keyword arguments that will be passed into your function, add two asterisk: \*\* before the parameter name in the function definition.
 
 This way the function will receive a dictionary of arguments, and can access the items accordingly:
 
@@ -747,9 +789,10 @@ my_function(name = "John", last_name = "Smith")
 ### Ordering Arguments in a Function
 
 The correct order for your parameters is:
+
 - Standard arguments
-- *args arguments
-- **kwargs arguments
+- \*args arguments
+- \*\*kwargs arguments
 
 ```py
 # correct_function_definition.py
@@ -772,23 +815,26 @@ my_function()
 ### The pass Statement
 
 Function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.
+
 ```py
 def myfunction():
   pass
 ```
 
 ## Decorators
-A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. 
+
+A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure.
 
 Decorator takes another function as an argument, extending the behavior of that function without explicitly modifying it.
 
 Decorators are usually called before the definition of a function you want to decorate.
 
-Decorators dynamically alter the functionality of a function, method or class without having to make subclasses or change the source code of the decorated class. 
+Decorators dynamically alter the functionality of a function, method or class without having to make subclasses or change the source code of the decorated class.
 
 Thanks to this our code will be more cleaner, more readable, maintainable (Which is no small thing), and reduce the boilerplate code allowing us to add functionality to multiple classes using a single method.
 
 ### Basic Template of Decorators
+
 ```py
 def my_decorator(func):
     def wrapper():
@@ -804,6 +850,7 @@ def func():
 ```
 
 Here is a simple decorator example:
+
 ```py
 def make_posh(func):
     def wrapper():
@@ -815,7 +862,7 @@ def make_posh(func):
         print('+=========+')
         return result
     return wrapper
- 
+
 @make_posh
 def pfib():
     '''Print out Fibonacci'''
@@ -823,6 +870,7 @@ def pfib():
 ```
 
 Here is another example:
+
 ```py
 import time
 
@@ -876,7 +924,9 @@ except:
 
 # Since the try block raises an error, the except block will be executed.
 ```
+
 ### Many Exceptions
+
 You can define as many exception blocks as you want, e.g. if you want to execute a special block of code for a special kind of error.
 
 ```py
@@ -906,11 +956,13 @@ finally:
 ```
 
 ### Raise an exception
+
 As a Python developer you can choose to throw an exception if a condition occurs.
 
 This type of error occurs whenever syntactically correct Python code results in an error.
 
 To throw (or raise) an exception, use the raise keyword.
+
 ```py
 # Raise an error and stop the program if x is lower than 0:
 
@@ -930,13 +982,13 @@ if not type(x) is int:
   raise TypeError("Only integers are allowed")
 ```
 
-
 ## pip
- pip is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library.
 
- pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4 downloaded from python.org or if you are working in a Virtual Environment created by virtualenv or venv. Just make sure to upgrade pip.
+pip is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library.
 
- https://pip.pypa.io/en/stable/installing/
+pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4 downloaded from python.org or if you are working in a Virtual Environment created by virtualenv or venv. Just make sure to upgrade pip.
+
+https://pip.pypa.io/en/stable/installing/
 
 ```sh
 # Check if pip is installed or not.
@@ -968,13 +1020,15 @@ pip install -r requirements.txt
 ```
 
 # Built-in Functions in Python
+
 https://docs.python.org/3/library/functions.html
 
 # Modules
+
 In Python, Modules are simply files with the “.py” extension containing Python code that can be imported inside another Python Program.
 
-Examples: ```os```, ```random```,```time```
- 
+Examples: `os`, `random`,`time`
+
 [Python Module Index](https://docs.python.org/3/py-modindex.html)
 
 https://docs.python.org/3/tutorial/modules.html
