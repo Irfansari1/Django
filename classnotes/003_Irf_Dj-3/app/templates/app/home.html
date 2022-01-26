@@ -1,0 +1,27 @@
+{%load static%}
+<img src="{%static 'app/kitten.jpg'%}" alt="My image" />
+<link rel="stylesheet" href="{%static 'app/style.css'%}" />
+
+<h1>Hello, this is a template view</h1>
+
+{{title}}
+<br />
+{{dict1.django}}
+<br />
+{{my_list}}
+<br />
+{{my_list.0}}
+<br />
+{% for num in my_list %}
+<li>{{ num }}</li>
+{% endfor %}
+<br />
+
+{% comment %} num num num {% endcomment %}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
