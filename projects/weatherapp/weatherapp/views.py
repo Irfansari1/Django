@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
 import requests
 from decouple import config
 from pprint import pprint
@@ -8,7 +9,7 @@ from .models import City
 
 def index(request):
     cities = City.objects.all()
-    url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric"
+    url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric&lang=tr"
     #city = "Berlin"
     #response = requests.get(url.format(city, config ("API_KEY")))
     #content= response.json()
@@ -53,4 +54,10 @@ def index(request):
             "city_data": city_data
         }
 
-    return render(request, "weatherapp/index.html", context)
+    return render(request, "weatherapp/index2.html", context)
+
+def city_delete(request, id):
+    city = get_object_or_404(City, id=id)
+    city.delete()
+    messages.success(request, "City deleted.")
+    return redirect("home")

@@ -7,6 +7,9 @@
     <title>Document</title>
   </head>
   <body>
+    {% if messages %} {% for message in messages %} {{ message }} {% endfor %}
+    {% endif %}
+
     <h1>Weather App</h1>
 
     <form action="">
@@ -24,6 +27,7 @@
     />
     <br />
     {{ city.desc }} <br />
+    <button><a href="{% url 'delete' city.city.id %}">Delete</a></button>
     <hr />
     {% endfor %}
   </body>
